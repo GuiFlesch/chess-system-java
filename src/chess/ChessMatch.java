@@ -28,9 +28,11 @@ public class ChessMatch {
         currentPlayer = Color.WHITE;
         initialSetup();
     }
+
     public int getTurn(){
         return turn;
     }
+
     public Color getCurrentPlayer(){
         return currentPlayer;
     }
@@ -128,18 +130,14 @@ public class ChessMatch {
         piecesOnTheBoard.add(newPiece);
 
         return newPiece;
-
-
     }
 
     private ChessPiece newPiece(String type, Color color){
         if (type.equals("B")) return new Bishop(board, color);
         if (type.equals("N")) return new Knight(board, color);
         if (type.equals("Q")) return new Queen(board, color);
-         return new Rook(board, color);
-
+        return new Rook(board, color);
         }
-
 
     private Piece makeMove(Position source, Position target){
         ChessPiece p = (ChessPiece)board.removePiece(source);
@@ -242,6 +240,7 @@ public class ChessMatch {
             throw new ChessException("There is no possible moves for the chosen piece");
         }
     }
+
     private void validateTargetPosition(Position source, Position target){
         if(!board.piece(source).possibleMove(target)){
             throw new ChessException("The chosen piece can't move to target position");
